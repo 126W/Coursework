@@ -1,0 +1,17 @@
+---
+
+- name: install
+  hosts: web_nginx_servers
+  become: yes
+
+  tasks:
+  - name: install nginx
+    apt: name=nginx state=latest
+
+  - name: change site
+    copy:
+      src: ../web_site/index_new.html
+      dest: /var/www/html/index_new.html
+      owner: admin
+      group: admin
+      mode: '0644'
