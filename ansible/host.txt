@@ -1,0 +1,4 @@
+
+[web_nginx_servers]
+web1 ansible_user=admin ansible_host=51.250.8.158 ansible_python_interpreter=/usr/bin/python3
+web2 ansible_user=admin ansible_host=51.250.29.85 ansible_python_interpreter=/usr/bin/python3
