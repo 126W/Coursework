@@ -1,17 +1,23 @@
 ---
-
-- name: install
-  hosts: web_nginx_servers
+- hosts: web_nginx_servers
+  remote_user: evg
   become: yes
-
+  become_user: root
   tasks:
-  - name: install nginx
-    apt: name=nginx state=latest
+  - name: "nginx install"
+    apt:
+      name: nginx
+      update_cache: yes
+      state: latest
 
-  - name: change site
+  - name: copy index_new.html
     copy:
-      src: ../web_site/index_new.html
-      dest: /var/www/html/index_new.html
-      owner: admin
-      group: admin
-      mode: '0644'
+      src: /home/evg/web_site/index.nginx-debian.html
+      dest: /var/www/html/index.nginx-debian.html
+
+  - name: "nginx start"
+    service:
+      name: nginx
+      enabled: yes
+      state: started
+...
