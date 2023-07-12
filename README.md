@@ -41,8 +41,10 @@
 
 Протестируйте сайт
 `curl -v <публичный IP балансера>:80` 
-> ![image](https://github.com/126W/Coursework/assets/122415129/7e6665bd-a952-4571-b254-3a4ae3f4d132)
-> ![image](https://github.com/126W/Coursework/assets/122415129/ab82e321-e9fb-4374-a1ff-90ed8d727f23)
+> ![image](https://github.com/126W/Coursework/assets/122415129/7344a499-28e9-453e-a730-7d9e79d7bdcf)
+
+> ![image](https://github.com/126W/Coursework/assets/122415129/79467e18-ec19-4934-a1fa-bcad0fb7d205)
+
 
 
 
