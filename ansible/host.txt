@@ -1,4 +1,24 @@
 
 [web_nginx_servers]
-web1 ansible_user=admin ansible_host=51.250.8.158 ansible_python_interpreter=/usr/bin/python3
-web2 ansible_user=admin ansible_host=51.250.29.85 ansible_python_interpreter=/usr/bin/python3
+web-1 ansible_user=evg ansible_host=158.160.58.193 ansible_ssh_private_key_file=/home/evg/.ssh/id_rsa ansible_python_interpreter=/usr/bin/python3
+web-2 ansible_user=evg ansible_host=51.250.108.250 ansible_ssh_private_key_file=/home/evg/.ssh/id_rsa ansible_python_interpreter=/usr/bin/python3
+
+[prometheus_server]
+prometheusmonitor ansible_user=evg ansible_host=62.84.124.219 ansible_ssh_private_key_file=/home/evg/.ssh/id_rsa ansible_python_interpreter=/usr/bin/python3
+
+[grafana_server]
+grafanamonitor ansible_user=evg ansible_host=51.250.12.228 ansible_ssh_private_key_file=/home/evg/.ssh/id_rsa ansible_python_interpreter=/usr/bin/python3
+
+[node-exporters]
+web-1 ansible_user=evg ansible_host=158.160.58.193 ansible_ssh_private_key_file=/home/evg/.ssh/id_rsa ansible_python_interpreter=/usr/bin/python3
+web-2 ansible_user=evg ansible_host=51.250.108.250 ansible_ssh_private_key_file=/home/evg/.ssh/id_rsa ansible_python_interpreter=/usr/bin/python3
+
+[elastic_server]
+elastic ansible_user=evg ansible_host=158.160.58.222 ansible_ssh_private_key_file=/home/evg/.ssh/id_rsa ansible_python_interpreter=/usr/bin/python3
+
+[kibana_server]
+kibana ansible_user=evg ansible_host=158.160.59.209 ansible_ssh_private_key_file=/home/evg/.ssh/id_rsa ansible_python_interpreter=/usr/bin/python3
+
+[filebeat_node]
+web-1 ansible_user=evg ansible_host=158.160.58.193 ansible_ssh_private_key_file=/home/evg/.ssh/id_rsa ansible_python_interpreter=/usr/bin/python3
+web-2 ansible_user=evg ansible_host=51.250.108.250 ansible_ssh_private_key_file=/home/evg/.ssh/id_rsa ansible_python_interpreter=/usr/bin/python3
