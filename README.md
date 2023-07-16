@@ -29,7 +29,8 @@
 ### Сайт
 Создайте две ВМ в разных зонах, установите на них сервер nginx, если его там нет. ОС и содержимое ВМ должно быть идентичным, это будут наши веб-сервера.
 Используйте набор статичных файлов для сайта. Можно переиспользовать сайт из домашнего задания.  
-![image](https://github.com/126W/Coursework/assets/122415129/3f873df6-6f93-409b-99b5-b76e939300fa)
+![image](https://github.com/126W/Coursework/assets/122415129/535bbc24-2e8f-4361-a9fc-8eb9e97effb8)
+
 
 Создайте [Target Group](https://cloud.yandex.com/docs/application-load-balancer/concepts/target-group), включите в неё две созданных ВМ.
 Создайте [Backend Group](https://cloud.yandex.com/docs/application-load-balancer/concepts/backend-group), настройте backends на target group, ранее созданную. Настройте healthcheck на корень (/) и порт 80, протокол HTTP.
