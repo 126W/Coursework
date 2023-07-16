@@ -16,12 +16,12 @@
 - name: export config
   ansible.builtin.template:
     src: nginxlog_exporter_config.hcl
-    dest: "/prometheus-nginxlog-exporter/nginxlog_exporter_config.hcl"
+    dest: /etc/prometheus-nginxlog-exporter.hcl
 
 - name: install unit file
   ansible.builtin.template:
-    src: /home/evg/.ansible/nginx-log-exporter.service
-    dest: /etc/systemd/system/nginx-log-exporter.service
+    src: /home/evg/.ansible/nginxlog-exporter.service
+    dest: /etc/systemd/system/nginxlog-exporter.service
     owner: root
     group: root
     mode: 0600
