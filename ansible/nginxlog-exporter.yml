@@ -1,3 +1,7 @@
+- name: Install  nginxlog-exporter
+  hosts: web_nginx_servers
+  become: yes
+
 - name: download and unarchive
   ansible.builtin.unarchive:
     remote_src: yes
