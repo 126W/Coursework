@@ -44,12 +44,15 @@
 
 ### Мониторинг
 Создайте ВМ, разверните на ней Prometheus. На каждую ВМ из веб-серверов установите Node Exporter и [Nginx Log Exporter](https://github.com/martin-helmich/prometheus-nginxlog-exporter). Настройте Prometheus на сбор метрик с этих exporter.
-Создайте ВМ, установите туда Grafana. Настройте её на взаимодействие с ранее развернутым Prometheus. Настройте дешборды с отображением метрик, минимальный набор — Utilization, Saturation, Errors для CPU, RAM, диски, сеть, http_response_count_total, http_response_size_bytes. Добавьте необходимые [tresholds](https://grafana.com/docs/grafana/latest/panels/thresholds/) на соответствующие графики.
+Создайте ВМ, установите туда Grafana.  
+ http://51.250.12.228:3000/?orgId=1 логин admin пароль 123456  
+ Настройте её на взаимодействие с ранее развернутым Prometheus. Настройте дешборды с отображением метрик, минимальный набор — Utilization, Saturation, Errors для CPU, RAM, диски, сеть, http_response_count_total, http_response_size_bytes. Добавьте необходимые [tresholds](https://grafana.com/docs/grafana/latest/panels/thresholds/) на соответствующие графики.
 ![image](https://github.com/126W/Coursework/assets/122415129/b0f11464-0bd6-4587-8dd0-2fa2a493ec12)
 
 ### Логи
 Cоздайте ВМ, разверните на ней Elasticsearch. Установите filebeat в ВМ к веб-серверам, настройте на отправку access.log, error.log nginx в Elasticsearch.
-Создайте ВМ, разверните на ней Kibana, сконфигурируйте соединение с Elasticsearch.
+Создайте ВМ, разверните на ней Kibana, сконфигурируйте соединение с Elasticsearch.  
+http://158.160.59.209:5601/app/infra#/logs/stream?_g=()&flyoutOptions=(flyoutId:!n,flyoutVisibility:hidden,surroundingLogsId:!n)    
 ![image](https://github.com/126W/Coursework/assets/122415129/f76e7f89-d706-4506-a798-7ff5280b2817)
 
 ### Сеть
