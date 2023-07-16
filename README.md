@@ -28,45 +28,46 @@
 
 ### Сайт
 Создайте две ВМ в разных зонах, установите на них сервер nginx, если его там нет. ОС и содержимое ВМ должно быть идентичным, это будут наши веб-сервера.
-
-Используйте набор статичных файлов для сайта. Можно переиспользовать сайт из домашнего задания.
+Используйте набор статичных файлов для сайта. Можно переиспользовать сайт из домашнего задания.  
+![image](https://github.com/126W/Coursework/assets/122415129/3f873df6-6f93-409b-99b5-b76e939300fa)
 
 Создайте [Target Group](https://cloud.yandex.com/docs/application-load-balancer/concepts/target-group), включите в неё две созданных ВМ.
-
 Создайте [Backend Group](https://cloud.yandex.com/docs/application-load-balancer/concepts/backend-group), настройте backends на target group, ранее созданную. Настройте healthcheck на корень (/) и порт 80, протокол HTTP.
-
 Создайте [HTTP router](https://cloud.yandex.com/docs/application-load-balancer/concepts/http-router). Путь укажите — /, backend group — созданную ранее.
-
 Создайте [Application load balancer](https://cloud.yandex.com/en/docs/application-load-balancer/) для распределения трафика на веб-сервера, созданные ранее. Укажите HTTP router, созданный ранее, задайте listener тип auto, порт 80.
-
+![image](https://github.com/126W/Coursework/assets/122415129/ec524079-0147-4f8b-bdc1-279a8174b03c)  
 Протестируйте сайт
-`curl -v <публичный IP балансера>:80` 
+`curl -v <публичный IP балансера>:80`   
 > ![image](https://github.com/126W/Coursework/assets/122415129/7344a499-28e9-453e-a730-7d9e79d7bdcf)
 
 > ![image](https://github.com/126W/Coursework/assets/122415129/79467e18-ec19-4934-a1fa-bcad0fb7d205)
 
-
-
-
 ### Мониторинг
 Создайте ВМ, разверните на ней Prometheus. На каждую ВМ из веб-серверов установите Node Exporter и [Nginx Log Exporter](https://github.com/martin-helmich/prometheus-nginxlog-exporter). Настройте Prometheus на сбор метрик с этих exporter.
-
 Создайте ВМ, установите туда Grafana. Настройте её на взаимодействие с ранее развернутым Prometheus. Настройте дешборды с отображением метрик, минимальный набор — Utilization, Saturation, Errors для CPU, RAM, диски, сеть, http_response_count_total, http_response_size_bytes. Добавьте необходимые [tresholds](https://grafana.com/docs/grafana/latest/panels/thresholds/) на соответствующие графики.
+![image](https://github.com/126W/Coursework/assets/122415129/b0f11464-0bd6-4587-8dd0-2fa2a493ec12)
 
 ### Логи
 Cоздайте ВМ, разверните на ней Elasticsearch. Установите filebeat в ВМ к веб-серверам, настройте на отправку access.log, error.log nginx в Elasticsearch.
-
 Создайте ВМ, разверните на ней Kibana, сконфигурируйте соединение с Elasticsearch.
+![image](https://github.com/126W/Coursework/assets/122415129/f76e7f89-d706-4506-a798-7ff5280b2817)
 
 ### Сеть
 Разверните один VPC. Сервера web, Prometheus, Elasticsearch поместите в приватные подсети. Сервера Grafana, Kibana, application load balancer определите в публичную подсеть.
-
 Настройте [Security Groups](https://cloud.yandex.com/docs/vpc/concepts/security-groups) соответствующих сервисов на входящий трафик только к нужным портам.
+Настройте ВМ с публичным адресом, в которой будет открыт только один порт — ssh. Настройте все security groups на разрешение входящего ssh из этой security group. Эта вм будет реализовывать концепцию bastion host. Потом можно будет подключаться по ssh ко всем хостам через этот хост.  
+Мне не одобрили security groups   
+![image](https://github.com/126W/Coursework/assets/122415129/2afb603d-309a-4ed9-9efc-9a6f4a47811b)
+Поэтому я развернул ВМ локально и проводил все действия с нее.  
+![image](https://github.com/126W/Coursework/assets/122415129/f1f0f054-10a8-4227-a260-08347c075bf8)  
+![image](https://github.com/126W/Coursework/assets/122415129/dc8b2987-bbe5-471a-9c6b-e8ac8158967b)
 
-Настройте ВМ с публичным адресом, в которой будет открыт только один порт — ssh. Настройте все security groups на разрешение входящего ssh из этой security group. Эта вм будет реализовывать концепцию bastion host. Потом можно будет подключаться по ssh ко всем хостам через этот хост.
 
 ### Резервное копирование
 Создайте snapshot дисков всех ВМ. Ограничьте время жизни snaphot в неделю. Сами snaphot настройте на ежедневное копирование.
+![image](https://github.com/126W/Coursework/assets/122415129/fd0aa49c-6ed6-4a6d-98f3-e13f957999fa)
+![image](https://github.com/126W/Coursework/assets/122415129/7f8a346c-4633-402c-b570-4f8c48624b8d)
+
 
 ### Дополнительно
 Не входит в минимальные требования. 
