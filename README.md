@@ -39,9 +39,10 @@
 ![image](https://github.com/126W/Coursework/assets/122415129/ec524079-0147-4f8b-bdc1-279a8174b03c)  
 Протестируйте сайт
 `curl -v <публичный IP балансера>:80`   
-> ![image](https://github.com/126W/Coursework/assets/122415129/7344a499-28e9-453e-a730-7d9e79d7bdcf)
+![image](https://github.com/126W/Coursework/assets/122415129/9527ebf7-4524-45ea-b3ad-be9c706bdd62)
 
-> ![image](https://github.com/126W/Coursework/assets/122415129/79467e18-ec19-4934-a1fa-bcad0fb7d205)
+
+![image](https://github.com/126W/Coursework/assets/122415129/79467e18-ec19-4934-a1fa-bcad0fb7d205)
 
 ### Мониторинг
 Создайте ВМ, разверните на ней Prometheus. На каждую ВМ из веб-серверов установите Node Exporter и [Nginx Log Exporter](https://github.com/martin-helmich/prometheus-nginxlog-exporter). Настройте Prometheus на сбор метрик с этих exporter.
