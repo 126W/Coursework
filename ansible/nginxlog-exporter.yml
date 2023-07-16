@@ -1,0 +1,45 @@
+- name: download and unarchive
+  ansible.builtin.unarchive:
+    remote_src: yes
+    src: https://github.com/martin-helmich/prometheus-nginxlog-exporter/releases/download/v1.10.0/prometheus-nginxlog-exporter_1.10.0_linux_amd64.tar.gz
+    dest: /home/evg/
+
+- name: binary to /usr/bin
+  ansible.builtin.copy:
+    remote_src: yes
+    src: /home/evg
+    dest: /usr/bin/prometheus-nginxlog-exporter
+    owner: root
+    group: root
+    mode: 0755
+
+- name: export config
+  ansible.builtin.template:
+    src: nginxlog_exporter_config.hcl
+    dest: "/prometheus-nginxlog-exporter/nginxlog_exporter_config.hcl"
+
+- name: install unit file
+  ansible.builtin.template:
+    src: /home/evg/.ansible/nginx-log-exporter.service
+    dest: /etc/systemd/system/nginx-log-exporter.service
+    owner: root
+    group: root
+    mode: 0600
+
+- name: connections
+  ansible.builtin.iptables:
+    chain: INPUT
+    protocol: tcp
+    destination_port: 4040
+    jump: ACCEPT
+    action: insert
+    rule_num: 1
+    match: tcp
+
+
+- name: start
+  ansible.builtin.systemd:
+    name: nginx-log-exporter.service
+    state: started
+    daemon_reload: yes
+    enabled: yes
