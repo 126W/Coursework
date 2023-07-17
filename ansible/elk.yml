@@ -1,7 +1,7 @@
 ---
 
 - name: Install elasticsearch
-  hosts: elastic_server
+  hosts: group-elastic
   become: yes
 
   tasks:
