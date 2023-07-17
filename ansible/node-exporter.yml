@@ -1,7 +1,7 @@
  ---
  
   - name: Node-exporter install
-    hosts: node-exporters
+    hosts: group-webservers
     become: yes
  
     tasks:
