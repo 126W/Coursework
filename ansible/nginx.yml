@@ -1,5 +1,5 @@
   ---
-  - hosts: web_nginx_servers
+  - hosts: group-webservers
     remote_user: evg
     become: yes
     become_user: root
