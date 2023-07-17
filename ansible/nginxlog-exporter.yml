@@ -1,3 +1,4 @@
+---
 - name: Install  nginxlog-exporter
   hosts: group-webservers
   become: yes
@@ -47,3 +48,4 @@
     state: started
     daemon_reload: yes
     enabled: yes
+...
