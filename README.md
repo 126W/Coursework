@@ -54,10 +54,11 @@ Cоздайте ВМ, разверните на ней Elasticsearch. Устан
 ### Сеть
 Разверните один VPC. Сервера web, Prometheus, Elasticsearch поместите в приватные подсети. Сервера Grafana, Kibana, application load balancer определите в публичную подсеть.
 Настройте [Security Groups](https://cloud.yandex.com/docs/vpc/concepts/security-groups) соответствующих сервисов на входящий трафик только к нужным портам.
-Настройте ВМ с публичным адресом, в которой будет открыт только один порт — ssh. Настройте все security groups на разрешение входящего ssh из этой security group. Эта вм будет реализовывать концепцию bastion host. Потом можно будет подключаться по ssh ко всем хостам через этот хост.  
-  
-![image](https://github.com/126W/Coursework/assets/122415129/ecacef83-e096-43bb-8e8b-9ccd32eba042)
-![image](https://github.com/126W/Coursework/assets/122415129/a55034ed-13bb-4d22-9eab-51ed1f77272d)
+Настройте ВМ с публичным адресом, в которой будет открыт только один порт — ssh. Настройте все security groups на разрешение входящего ssh из этой security group. Эта вм будет реализовывать концепцию bastion host. Потом можно будет подключаться по ssh ко всем хостам через этот хост.    
+![image](https://github.com/126W/Coursework/assets/122415129/0741e039-c7ed-404e-a862-e58a1abb5b43)
+![image](https://github.com/126W/Coursework/assets/122415129/19a6e07b-c0c5-4bf3-913b-5159e5f85a7d)
+![image](https://github.com/126W/Coursework/assets/122415129/8cb4133d-1c52-480c-bf64-b92caa5d278c)
+![image](https://github.com/126W/Coursework/assets/122415129/0c2a1e0c-6748-4b26-9d01-1305dce22f70)
 
 ### Резервное копирование
 Создайте snapshot дисков всех ВМ. Ограничьте время жизни snaphot в неделю. Сами snaphot настройте на ежедневное копирование.
