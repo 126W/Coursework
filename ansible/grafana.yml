@@ -1,5 +1,5 @@
 ---
-- hosts: grafana_server
+- hosts: group-public-network-grafana
   remote_user: evg
   become: yes
   become_user: root
