@@ -1,7 +1,7 @@
 ---
 
 - name: Install  kibana
-  hosts: kibana_server
+  hosts: group-public-network-grafana
   become: yes
 
   tasks:
