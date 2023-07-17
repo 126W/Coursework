@@ -1,5 +1,5 @@
 - name: Install  nginxlog-exporter
-  hosts: web_nginx_servers
+  hosts: group-webservers
   become: yes
 
 - name: download and unarchive
